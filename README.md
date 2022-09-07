@@ -1,7 +1,56 @@
 # RFC for `template-generator-cli` (name TBD)
 
-Note: while commands like `precommit autoupdate`, `cz bump`, and `cs changelog` *could* be moved
-into `template-generator-cli`, they could also be called outside of `template-generator-cli`. Advantage: in GitHub actions,
+## Executive Summary
+
+Here, we propose a tool that makes Python software development and deployment as frictionless as possible--both for individuals and for teams.
+
+## Movivations
+
+- Python packaging is hard
+  - There are many tools, templates, frameworks, build chains, linters, etc. It's overwhelming to get started.
+
+## Philosophies
+
+*Philosophies* are statements of opinion that we must agree upon. An *Implementation* will not be considered
+valid unless it can be shown to satisfy the philosophies.
+
+- #TemplatesAreEvil 
+    - Templates get stale over time
+    - A process should exist so that projects are always up to date
+- ... but they are helpful:
+    - In the overwhelming space of Python software development, starting from an opinionated framework helps learn best practices with minimal cognitive load.
+- ... but they often lack desirable features, outside the scope of generating code:
+    - Writing/releasing production-worthy code requires infrastructure (i.e. GitHub account/repo). These
+    tools also have a non-trivial learning curve that should be automated where possible.
+- Automation eliminates avoidable errors caused by manual steps
+- The average use should not have to learn the entire Python ecosystem--thanks to abstractions.
+- The advanced user should be able to extend the abstractions; you should not need to "grow out" of the tool.
+- Where possible, we should avoid rebuilding what has already been built/standardized on by the community.
+- The iteration cycle should be fast:
+    - developers should be able to run builds locally
+    - processes that can be run in parallel should be run in parallel (both locally and in CI)
+- Released software and docs should be immutable. Once package `v0.0.0` is out there,
+  consumers of the software should be able to rely on the fact that it won't disappear and that the behavior
+  won't change.
+- The tool should be built with both open- and closed-source development in mind.
+- The trunk-based development branching model should have first-class support.
+- Multi-project repositories (mono-repos) have a place in modern software development, and should be supported to an extent (e.g. `frontend` and `backend` projects, or `src` and `iac` might reside in one repository)
+    - ... but the framework should encourage developers to modularize projects in separate repos as much as possible
+
+## Implementation
+
+### Note 1:
+
+Think of this proposal as defining an interface. We don't *need* a `Makefile`, but having
+some sort of CLI interface is an example of how we might satisfy the philosophy of 
+developers being able to run builds locally.
+
+### Note 2:
+
+while commands like `precommit autoupdate`, `cz bump`, and `cs changelog` *could* be moved
+into `template-generator-cli`, they could also be called outside of `template-generator-cli`. 
+
+Advantage: in GitHub actions,
 we could have those commands be parallel steps. That way they could be parallelized accross multiple
 GitHub actions workers, each with their own CPU, rather than be parallelized on a single worker
 with one CPU. 
@@ -73,3 +122,10 @@ release:
     # publish the python package (.whl and .tgz files)
     pipx run twine upload ./dist/*
 ```
+
+## Notes on the implementation
+
+- If linting config files are present locally (`.pylintrc`, `.flake8`, etc.) then
+  editors like VS Code an PyCharm can be configured to use them real time. This
+  means you can make linting fixes as you develop instead of having to wait until
+  a PR is submitted.
