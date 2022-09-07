@@ -1,5 +1,7 @@
 # RFC for `template-generator-cli` (name TBD)
 
+Discussion and reactions to this RFC belong [in this issue](https://github.com/phitoduck/project-generator-cli-poc/issues/1).
+
 ## Executive Summary
 
 Here, we propose a tool that makes Python software development and deployment as frictionless as possible--both for individuals and for teams.
