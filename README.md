@@ -6,6 +6,8 @@ Discussion and reactions to this RFC belong [in this issue](https://github.com/p
 
 Here, we propose a tool that makes Python software development and deployment as frictionless as possible--both for individuals and for teams.
 
+Any text in this file is up for discussion.
+
 ## Movivations
 
 - Python packaging is hard
