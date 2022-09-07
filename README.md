@@ -83,9 +83,14 @@ project = AwesomeProjectTemplate(
         "pandas>=9.9.9",
     ],
     extras_require={
-        "test": ["pytest", "pytest-cov"]
-        "docs": ["sphinx"]
+        "test": ["pytest", "pytest-cov"],
+        "docs": ["sphinx"],
     },
+    # no more MANIFEST.in headaches!
+    inlude_assets_at_fpaths=[
+        "**.json",
+        "**.csv",
+    ],
     sphinx=SphinxConfig(
         plugins=[
             "copybutton",
@@ -101,6 +106,8 @@ project = AwesomeProjectTemplate(
     # generate a Pipfile and Pipfile.lock
     lock_dependencies=True,
 )
+
+
 
 # generate files and their contents based on the config file
 project.render()
