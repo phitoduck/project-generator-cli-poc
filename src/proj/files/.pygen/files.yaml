@@ -1,0 +1,16 @@
+friends:
+   - name: murphy  # How's it going?
+   - name: jobillydoo  # Have I been replaced?
+   - name: barrpiddles
+enemies:
+   - name: zurg
+   -
+        # YOLO!
+     name: smurf
+   # YOLO!
+   - name: larry
+unsure:
+     reasons:
+        - blegh
+        - blagh
+     motivations: none, really  # How's it going?
