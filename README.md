@@ -10,8 +10,11 @@ Any text in this file is up for discussion.
 
 ## Movivations
 
-- Python packaging is hard
+- **Python packaging is hard**
   - There are many tools, templates, frameworks, build chains, linters, etc. It's overwhelming to get started.
+- **Templates go stale.** A team Eric is on once made a template generator to standardize project setup. It worked great until we needed to make
+  some dramatic changes to our original templates. Each of the 50-70 projects created with the old tool has diverged
+  in different ways. We'll have to upgrade each project by hand. It only takes one migration like this to never want to do that again.
 
 ## Philosophies
 
