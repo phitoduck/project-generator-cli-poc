@@ -1,0 +1,19 @@
+# This file let's you run pre-commit hooks!
+repos:
+# This is the official pre-commit repository URL
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0  # Showing off end-of-line comments 🎉
+    hooks:
+    -   id: trailing-whitespace
+    -   id: check-added-large-files
+    -   id: check-ast
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: check-xml
+    -   id: check-yaml
+    -   id: debug-statements
+    -   id: end-of-file-fixer
+    -   id: requirements-txt-fixer
+    -   id: mixed-line-ending
+        args:
+        -   --fix=auto
